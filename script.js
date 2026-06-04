@@ -1,4 +1,4 @@
-const fetchGETAlunos = async () => {
+const buscarAlunos = async () => {
     try {
         let resposta = await fetch('http://localhost:3000/users');
         resposta = await resposta.json();
@@ -31,20 +31,20 @@ const enviarAluno = async () => {
     }
 }
 
-const removerAluno = async (event) => {
-    const id = event.target.dataset.id;
+const removerAluno = async (evento) => {
+    const id = evento.target.dataset.id;
     try {
         await fetch(`http://localhost:3000/users/${id}`, {
             method: 'DELETE'
         });
-        event.target.parentElement.remove();
+        evento.target.parentElement.remove();
     } catch (e) {
         console.error(e);
     }
 };
 
 const renderAlunos = async () => {
-    const alunos = await fetchGETAlunos();
+    const alunos = await buscarAlunos();
     const elemUl = document.querySelector('#lista-alunos');
 
     for (let aluno of alunos) {
