@@ -136,7 +136,10 @@ const trocarCores = (evento) => {
         document.head.querySelector('#css').setAttribute('href', 'dark.css');
     } else if (estado === 'cyberpunk') {
         document.head.querySelector('#css').setAttribute('href', 'joao.css');
+    } else if (estado === 'blackstar') {
+        document.head.querySelector('#css').setAttribute('href', 'predo.css');
     }
+    
 }
 
 const selectMode = document.querySelector('#select-tema');
