@@ -1,6 +1,7 @@
-const buscarAlunos = async () => {
+const buscarAlunos = async (id=undefined) => {
+    const url = id ? `http://localhost:3000/users/${id}` : 'http://localhost:3000/users';
     try {
-        let resposta = await fetch('http://localhost:3000/users');
+        let resposta = await fetch(url);
         resposta = await resposta.json();
 
         if (typeof(resposta) !== 'object') {
@@ -121,24 +122,29 @@ const renderAlunos = async () => {
 };
 
 const editarAluno = async (evento) => {
+    const aluno = await buscarAlunos(evento.target.dataset.id);
     const inputNome = document.createElement('input');
     inputNome.type = 'text';
     inputNome.placeholder = 'Nome';
     inputNome.id = 'input-editar-nome';
+    inputNome.value = aluno.nome;
 
     const inputNascimento = document.createElement('input');
     inputNascimento.type = 'date';
     inputNascimento.id = 'input-editar-nascimento';
+    inputNascimento.value = aluno.nascimento;
 
     const inputTelefone = document.createElement('input');
     inputTelefone.type = 'tel';
     inputTelefone.placeholder = 'Telefone';
     inputTelefone.id = 'input-editar-telefone';
+    inputTelefone.value = aluno.telefone;
 
     const inputEmail = document.createElement('input');
     inputEmail.type = 'text';
     inputEmail.placeholder = 'Email';
     inputEmail.id = 'input-editar-email';
+    inputEmail.value = aluno.email;
 
     const btAtualizar = document.createElement('button');
     btAtualizar.innerText = '✔️';
