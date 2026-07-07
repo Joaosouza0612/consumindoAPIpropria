@@ -169,3 +169,7 @@ input[type="tel"]:focus {
   color: var(--detalhe-alerta);
   text-transform: uppercase;
 }
+
+.obrigatorio {
+    color: brown;
+}
